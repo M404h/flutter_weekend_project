@@ -1,0 +1,1 @@
+enum psuhAntimationType { fadin, fadout }
