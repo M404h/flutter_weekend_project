@@ -32,25 +32,25 @@ class _eLeaveState extends State<eLeave> {
               shrinkWrap: true,
               slivers: <Widget>[
                 CustomAppBar(
-                  pagetitle: "Leave",
+                  pagetitle: "",
                   backtitle: "Home",
                   actions: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 5),
-                          child: IconButton(
-                            icon: Image.asset(
-                              "assets/images/icon-history-30.svg",
-                              color: CustomColors.green,
-                              height: 30,
-                            ),
-                            onPressed: () {
-                              pushWithAnimation("/eLeaveHistory", context);
-                            },
-                          ),
-                        ),
+                        // Padding(
+                        //   padding: const EdgeInsets.only(right: 5),
+                        //   child: IconButton(
+                        //     icon: Image.asset(
+                        //       "assets/images/icon-history-30.svg",
+                        //       color: CustomColors.green,
+                        //       height: 30,
+                        //     ),
+                        //     onPressed: () {
+                        //       pushWithAnimation("/eLeaveHistory", context);
+                        //     },
+                        //   ),
+                        // ),
                       ],
                     ),
                   ],
