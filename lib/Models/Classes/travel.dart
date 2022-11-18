@@ -1,12 +1,14 @@
 class Travel {
   final String country;
-  final String? resturantExpenses;
-  final String? hotelExpenses;
-  final String? enterntainmentExpenses;
-  final String? flightExpenses;
+  final double? resturantExpenses;
+  final double? hotelExpenses;
+  final double? enterntainmentExpenses;
+  final double? flightExpenses;
+  final double budget;
 
   Travel({
     required this.country,
+    required this.budget,
     this.resturantExpenses,
     this.enterntainmentExpenses,
     this.hotelExpenses,
