@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ProviderScope(
       child: MaterialApp(
-        initialRoute: AuthScreen.id,
+        initialRoute: HomeScreen.id,
         routes: {
           AuthScreen.id: (context) => AuthScreen(),
           HomeScreen.id: (context) => HomeScreen(),

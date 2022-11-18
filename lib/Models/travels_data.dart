@@ -6,9 +6,9 @@ import 'Classes/travel.dart';
 
 class TravelsData extends ChangeNotifier {
   List<Travel> _travels = [
-    Travel(country: 'SA', expenses: {'resturants': '3000'}),
-    Travel(country: 'SA', expenses: {'resturants': '3000'}),
-    Travel(country: 'SA', expenses: {'resturants': '3000'}),
+    Travel(country: 'SA', resturantExpenses: 'efc'),
+    Travel(country: 'SA', resturantExpenses: 'efc'),
+    Travel(country: 'SA', resturantExpenses: 'efc'),
   ];
 
   UnmodifiableListView<Travel> get travels {
