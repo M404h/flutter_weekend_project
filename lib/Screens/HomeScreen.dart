@@ -20,15 +20,13 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             Consumer(builder: (context, ref, child) {
-              final travels = ref.watch(travelsProvider)
+              final travels = ref.watch(travelsProvider);
               return ListView.builder(
-                itemCount: travels.length,
+                itemCount: ,
                 itemBuilder: (context, index) {
                   final travel = travels[index];
 
-                  //^ one task
-
-                  // return TaskTile(task: task);
+                 
                   return Container(Text())
                   );
                 },
