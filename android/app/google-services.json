@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "573485230524",
+    "project_id": "flutter-weekend-e7fd7",
+    "storage_bucket": "flutter-weekend-e7fd7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573485230524:android:24afeec161ff2420c763b9",
+        "android_client_info": {
+          "package_name": "com.safrati.flutter_weekend_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "573485230524-hashl8h6u3i5tmqefojs0i9o8iqen4vv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKX7TDy5OwVxp6CBa6ZGE7OjAeqakbm78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "573485230524-hashl8h6u3i5tmqefojs0i9o8iqen4vv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
