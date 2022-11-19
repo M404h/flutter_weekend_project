@@ -27,8 +27,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ProviderScope(
       child: MaterialApp(
-      theme: new ThemeData(scaffoldBackgroundColor: Color.fromARGB(255, 255, 255, 255)),
-
+        theme: new ThemeData(
+            scaffoldBackgroundColor: Color.fromARGB(255, 255, 255, 255)),
         initialRoute: HomeScreen.id,
         routes: {
           AuthScreen.id: (context) => AuthScreen(),

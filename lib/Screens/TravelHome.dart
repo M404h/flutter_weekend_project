@@ -161,9 +161,9 @@ class TravelHome extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("city",
+                        Text("City",
                             style: TextStyle(
-                              color: titleColor,
+                              color: lightColor,
                               fontSize: 24,
                             )),
                         IconButton(
@@ -200,17 +200,16 @@ class TravelHome extends StatelessWidget {
                             "budget": category["budget"]
                           },
                         );
-                      }
-                      else {
-                         Navigator.pushReplacementNamed(
-                        context,
-                        CategoryDetailsManual.id,
-                        arguments: {
-                         "category":category["category"],
-                          "icon":category["icon"],
-                          "budget":category["budget"]
-                        },
-                      );
+                      } else {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          CategoryDetailsManual.id,
+                          arguments: {
+                            "category": category["category"],
+                            "icon": category["icon"],
+                            "budget": category["budget"]
+                          },
+                        );
                       }
                     },
                     child: Container(

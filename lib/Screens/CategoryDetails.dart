@@ -8,15 +8,61 @@ import 'package:flutter_weekend_project/Screens/TravelHome.dart';
 import 'package:flutter_weekend_project/constants.dart';
 import 'package:flutter_weekend_project/Models/travels_data.dart';
 import 'package:flutter_weekend_project/widgets/CustomAppBar.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class CategoryDetails extends StatelessWidget {
+import '../Models/Classes/flight.dart';
+import '../Models/Classes/hotel.dart';
+
+class CategoryDetails extends StatefulWidget {
   static String id = 'CategoryDetailsScreen_id';
+
+  @override
+  State<CategoryDetails> createState() => _CategoryDetailsState();
+}
+
+class _CategoryDetailsState extends State<CategoryDetails> {
+  final DB = FirebaseFirestore.instance;
+
+  List<Hotel> _hotels = [];
+
+  Future getHotels() async {
+    
+    await DB.collection('Cities/Dubai/Hotels').get().then((snapshot) {
+      snapshot.docs.forEach((snapshot) {
+        _hotels.add(Hotel.fromFirestore(snapshot, null));
+      });
+    });
+    print(_hotels);
+  }
+
+    List<Flight> _flights = [];
+
+
+  Future getFlights() async {
+    
+    await DB.collection('Cities/Dubai/Flights').get().then((snapshot) {
+      snapshot.docs.forEach((snapshot) {
+        _hotels.add(Flight.fromFirestore(snapshot, null));
+      });
+    });
+    print(_hotels);
+  }
+
+  @override
+  void initState() {
+    print('initState------------');
+    getHotels();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final categoryObject = ModalRoute.of(context)!.settings.arguments as Map;
     final travelsProvider = ChangeNotifierProvider(
       (ref) => TravelsData(),
     );
+
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -106,9 +152,9 @@ class CategoryDetails extends StatelessWidget {
               ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: budget_category.length,
+                itemCount: _hotels.length,
                 itemBuilder: (context, index) {
-                  final category = budget_category[index];
+                  final hotel = _hotels[index];
                   return Container(
                     padding: EdgeInsets.all(20),
                     height: 110,
@@ -148,12 +194,12 @@ class CategoryDetails extends StatelessWidget {
                             Row(
                               children: [
                                 Image.asset(
-                                  category["icon"],
+                                  'images/hotel.png',
                                   height: 30,
                                   color: lightColor,
                                 ),
                                 Text(
-                                  "  " + category["category"],
+                                  "  " + hotel.name,
                                   style: TextStyle(
                                       color: titleColor, fontSize: 20),
                                 ),
@@ -161,7 +207,7 @@ class CategoryDetails extends StatelessWidget {
                             ),
 
                             Text(
-                              "\$${category["budget"]}",
+                              "\$${hotel.price.toString()}",
                               style: TextStyle(color: lightColor, fontSize: 20),
                             ),
                           ],

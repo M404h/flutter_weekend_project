@@ -35,9 +35,11 @@ class TravelsData extends ChangeNotifier {
 
   addTravel(Travel travel) {
     _travels.add(travel);
+    notifyListeners();
   }
 
   deleteTravel(Travel travel) {
     _travels.remove(travel);
+    notifyListeners();
   }
 }

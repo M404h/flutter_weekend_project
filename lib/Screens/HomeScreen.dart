@@ -173,56 +173,54 @@ class HomeScreen extends StatelessWidget {
                       },
                     )
                   : Padding(
-                      padding: const EdgeInsets.symmetric(
-                         vertical: 250),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("You dont have any trip yet",
-                            style: TextStyle(
-                                color: titleColor,
-                                fontSize: 20)),
-                        SizedBox(
-                          height: 25,
-                        ),
-                        GestureDetector(
-                          onTap: () => {
-                            Navigator.pushReplacementNamed(
-                                context, TravelHome.id)
-                          },
-                          child: Container(
-                            width: 200,
-                            height: 60,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(
-                                  width: 3,
-                                  color: lightColor,
-                                )),
-                            child: Expanded(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.add,
+                      padding: const EdgeInsets.symmetric(vertical: 250),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("You dont have any trip yet",
+                              style:
+                                  TextStyle(color: titleColor, fontSize: 20)),
+                          SizedBox(
+                            height: 25,
+                          ),
+                          GestureDetector(
+                            onTap: () => {
+                              Navigator.pushReplacementNamed(
+                                  context, TravelHome.id)
+                            },
+                            child: Container(
+                              width: 200,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(
+                                    width: 3,
                                     color: lightColor,
-                                  ),
-                                  Text(
-                                    'Add a travel',
-                                    style: TextStyle(
-                                        color: lightColor,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
+                                  )),
+                              child: Expanded(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.add,
+                                      color: lightColor,
+                                    ),
+                                    Text(
+                                      'Add a trip',
+                                      style: TextStyle(
+                                          color: lightColor,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  );
+                        ],
+                      ),
+                    );
             }),
           ],
         ),

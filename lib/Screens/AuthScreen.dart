@@ -95,15 +95,6 @@ class _AuthScreenState extends State<AuthScreen> {
         timeout: const Duration(minutes: 2),
         verificationCompleted: (PhoneAuthCredential credential) async {
           print('\n \n ------------here1-------------');
-          // await Future.delayed(const Duration(seconds: 2), () {
-          //   _auth
-          //       .signInWithCredential(credential)
-          //       .then((UserCredential result) {
-          //     _authScreenNavigator();
-          //   }).catchError((e) {
-          //     print(e);
-          //   });
-          // });
         },
         verificationFailed: (FirebaseAuthException authException) {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -120,7 +111,7 @@ class _AuthScreenState extends State<AuthScreen> {
               context: context,
               builder: (context) {
                 return AlertDialog(
-                  backgroundColor: kSecondaryColor,
+                  backgroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(
@@ -129,7 +120,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     ),
                   ),
                   content: Container(
-                    color: kSecondaryColor,
+                    color: Colors.white,
                     height: 220,
                     width: 320,
                     child: SingleChildScrollView(
@@ -145,7 +136,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               children: [
                                 Icon(
                                   Icons.sms,
-                                  color: Colors.white,
+                                  color: lightColor,
                                 ),
                                 SizedBox(
                                   width: 8,
@@ -153,7 +144,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                 Text(
                                   "SMS Code",
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: lightColor,
                                     fontSize: 22,
                                   ),
                                 ),
@@ -166,7 +157,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           Container(
                             padding: const EdgeInsets.all(8.0),
                             child: TextField(
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: lightColor),
                               inputFormatters: [
                                 LengthLimitingTextInputFormatter(6)
                               ],
@@ -187,11 +178,11 @@ class _AuthScreenState extends State<AuthScreen> {
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Colors.white,
+                                    color: lightColor,
                                   ),
                                 ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.white),
+                                  borderSide: BorderSide(color: lightColor),
                                 ),
                               ),
                             ),
@@ -205,7 +196,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: lightColor,
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               width: 90,
@@ -215,7 +206,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               child: Center(
                                 child: Text(
                                   "Verify",
-                                  style: TextStyle(color: kSecondaryColor),
+                                  style: TextStyle(color: Colors.white),
                                 ),
                               ),
                             ),
@@ -291,7 +282,7 @@ class _AuthScreenState extends State<AuthScreen> {
     // print('CountryDialCode' + _countryDialCode);
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: kSecondaryColor,
+        backgroundColor: Colors.white,
         body: SafeArea(
             child: Form(
           key: _formKey,
@@ -308,7 +299,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 28,
-                    color: Colors.white,
+                    color: lightColor,
                   ),
                 ),
                 SizedBox(
@@ -316,7 +307,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
                 Text(
                   'Mobile:',
-                  style: TextStyle(color: Colors.white, fontSize: 15),
+                  style: TextStyle(color: lightColor, fontSize: 15),
                 ),
                 SizedBox(
                   height: 10,
@@ -334,7 +325,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   keyboardType: TextInputType.numberWithOptions(
                       signed: true, decimal: true),
                   textInputAction: TextInputAction.done,
-                  style: TextStyle(color: kSecondaryColor),
+                  style: TextStyle(color: lightColor),
                   decoration: InputDecoration(
                     // prefixStyle: ,
                     prefixIcon: GestureDetector(
@@ -361,20 +352,20 @@ class _AuthScreenState extends State<AuthScreen> {
                     filled: true,
                     fillColor: kSecColor,
                     hintText: 'XXXXXXXXX',
-                    hintStyle: TextStyle(color: kSecondaryColor),
+                    hintStyle: TextStyle(color: lightColor),
                     contentPadding: EdgeInsets.symmetric(
                       horizontal: 22.0,
                       vertical: 22.0,
                     ),
                     border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
+                      borderSide: BorderSide(color: lightColor),
                       borderRadius: BorderRadius.all(
                         Radius.circular(10.0),
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: kSecColor,
+                        color: lightColor,
                       ),
                       borderRadius: BorderRadius.all(
                         Radius.circular(
@@ -402,12 +393,12 @@ class _AuthScreenState extends State<AuthScreen> {
                     height: 60,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: kSecColor,
+                      color: lightColor,
                     ),
                     child: Center(
                       child: Text(
                         'Next',
-                        style: TextStyle(color: kSecondaryColor, fontSize: 18),
+                        style: TextStyle(color: Colors.white, fontSize: 18),
                       ),
                     ),
                   ),
