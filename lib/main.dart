@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_weekend_project/Screens/BudgetDivider.dart';
+import 'package:flutter_weekend_project/Screens/CategoryDetails.dart';
+import 'package:flutter_weekend_project/Screens/CategoryDetailsManual.dart';
 import 'Screens/AuthScreen.dart';
 import 'Screens/HomeScreen.dart';
+import 'Screens/TravelHome.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() async {
@@ -22,10 +27,16 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ProviderScope(
       child: MaterialApp(
+      theme: new ThemeData(scaffoldBackgroundColor: Color.fromARGB(255, 255, 255, 255)),
+
         initialRoute: HomeScreen.id,
         routes: {
           AuthScreen.id: (context) => AuthScreen(),
           HomeScreen.id: (context) => HomeScreen(),
+          TravelHome.id: (context) => TravelHome(),
+          BudgetDivider.id: (context) => BudgetDivider(),
+          CategoryDetails.id: (context) => CategoryDetails(),
+          CategoryDetailsManual.id: (context) => CategoryDetailsManual()
         },
       ),
     );

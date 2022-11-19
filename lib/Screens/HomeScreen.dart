@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_weekend_project/Screens/TravelHome.dart';
 import 'package:flutter_weekend_project/constants.dart';
 import 'package:flutter_weekend_project/Models/travels_data.dart';
 
@@ -11,14 +12,26 @@ class HomeScreen extends StatelessWidget {
       (ref) => TravelsData(),
     );
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('My Travels'),
-        elevation: 10,
-        backgroundColor: kSecondaryColor,
+        title: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "My Trip",
+                style: TextStyle(
+                  color: titleColor,
+                  fontSize: 20,
+                ),
+              )
+            ],
+          ),
+        ),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(top: 70),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -30,7 +43,6 @@ class HomeScreen extends StatelessWidget {
                       itemCount: travels.length,
                       itemBuilder: (context, index) {
                         final travel = travels[index];
-
                         return Container(
                           padding: EdgeInsets.all(20),
                           height: 100,
@@ -162,34 +174,55 @@ class HomeScreen extends StatelessWidget {
                     )
                   : Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 130, vertical: 300),
-                      child: Container(
-                        width: 40,
-                        height: 60,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              width: 3,
-                              color: Colors.blue,
-                            )),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.add,
-                              color: Colors.blue,
-                            ),
-                            Text(
-                              'Add a travel',
-                              style: TextStyle(
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
+                         vertical: 250),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("You dont have any trip yet",
+                            style: TextStyle(
+                                color: titleColor,
+                                fontSize: 20)),
+                        SizedBox(
+                          height: 25,
                         ),
-                      ),
-                    );
+                        GestureDetector(
+                          onTap: () => {
+                            Navigator.pushReplacementNamed(
+                                context, TravelHome.id)
+                          },
+                          child: Container(
+                            width: 200,
+                            height: 60,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(20),
+                                border: Border.all(
+                                  width: 3,
+                                  color: lightColor,
+                                )),
+                            child: Expanded(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.add,
+                                    color: lightColor,
+                                  ),
+                                  Text(
+                                    'Add a travel',
+                                    style: TextStyle(
+                                        color: lightColor,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
             }),
           ],
         ),
