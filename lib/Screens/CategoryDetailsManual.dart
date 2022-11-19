@@ -7,7 +7,6 @@ import 'package:flutter_weekend_project/Screens/HomeScreen.dart';
 import 'package:flutter_weekend_project/Screens/TravelHome.dart';
 import 'package:flutter_weekend_project/constants.dart';
 import 'package:flutter_weekend_project/Models/travels_data.dart';
-import 'package:flutter_weekend_project/widgets/CustomAppBar.dart';
 
 class CategoryDetailsManual extends StatelessWidget {
   static String id = 'CategoryDetailsManualScreen_id';

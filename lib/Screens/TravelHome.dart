@@ -9,7 +9,6 @@ import 'package:flutter_weekend_project/Screens/CategoryDetailsManual.dart';
 import 'package:flutter_weekend_project/Screens/HomeScreen.dart';
 import 'package:flutter_weekend_project/constants.dart';
 import 'package:flutter_weekend_project/Models/travels_data.dart';
-import 'package:flutter_weekend_project/widgets/CustomAppBar.dart';
 
 import '../Models/Classes/flight.dart';
 import '../Models/Classes/hotel.dart';
