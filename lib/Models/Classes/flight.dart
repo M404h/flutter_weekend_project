@@ -4,7 +4,7 @@ class Flight {
   final String company;
   final String from;
   final String to;
-  final double price;
+  final int price;
   final String location;
   final Timestamp date;
 

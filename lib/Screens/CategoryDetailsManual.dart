@@ -18,6 +18,13 @@ class CategoryDetailsManual extends StatelessWidget {
       (ref) => TravelsData(),
     );
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: lightColor,
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
+          onPressed: (() => {})),
       appBar: AppBar(
         title: Row(
           children: [
@@ -135,20 +142,22 @@ class CategoryDetailsManual extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                        
-                        Text(
-                          budget["date"],
-                          style: TextStyle(color: titleColor, fontSize: 15),
-                        ),  Text(
-                          "- \$${budget["amount"]}",
-                          style: TextStyle(color: lightColor, fontSize: 20),
-                        ),
+                            Text(
+                              budget["date"],
+                              style: TextStyle(color: titleColor, fontSize: 15),
+                            ),
+                            Text(
+                              "- \$${budget["amount"]}",
+                              style: TextStyle(color: lightColor, fontSize: 20),
+                            ),
                           ],
                         ),
                         SizedBox(
                           height: 10,
                         ),
-            ],),);
+                      ],
+                    ),
+                  );
                 },
               ),
             ],
@@ -159,10 +168,9 @@ class CategoryDetailsManual extends StatelessWidget {
   }
 
   final List budget_manaul = [
-    {"amount": "20","date":"09 Oct 2022"},
-    {"amount": "10","date":"12 Sep 2022"},
-    {"amount": "30","date":"05 Aug 2022"},
-    {"amount": "10","date":"01 Aug 2022"},
-   
+    {"amount": "20", "date": "09 Oct 2022"},
+    {"amount": "10", "date": "12 Sep 2022"},
+    {"amount": "30", "date": "05 Aug 2022"},
+    {"amount": "10", "date": "01 Aug 2022"},
   ];
 }

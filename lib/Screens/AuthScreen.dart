@@ -298,8 +298,9 @@ class _AuthScreenState extends State<AuthScreen> {
                   'Safrati',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 28,
+                    fontSize: 30,
                     color: lightColor,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(

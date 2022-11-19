@@ -22,40 +22,6 @@ class CategoryDetails extends StatefulWidget {
 }
 
 class _CategoryDetailsState extends State<CategoryDetails> {
-  final DB = FirebaseFirestore.instance;
-
-  List<Hotel> _hotels = [];
-
-  Future getHotels() async {
-    
-    await DB.collection('Cities/Dubai/Hotels').get().then((snapshot) {
-      snapshot.docs.forEach((snapshot) {
-        _hotels.add(Hotel.fromFirestore(snapshot, null));
-      });
-    });
-    print(_hotels);
-  }
-
-    List<Flight> _flights = [];
-
-
-  Future getFlights() async {
-    
-    await DB.collection('Cities/Dubai/Flights').get().then((snapshot) {
-      snapshot.docs.forEach((snapshot) {
-        _hotels.add(Flight.fromFirestore(snapshot, null));
-      });
-    });
-    print(_hotels);
-  }
-
-  @override
-  void initState() {
-    print('initState------------');
-    getHotels();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     final categoryObject = ModalRoute.of(context)!.settings.arguments as Map;
@@ -69,7 +35,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
           children: [
             GestureDetector(
               onTap: () {
-                Navigator.pushReplacementNamed(context, TravelHome.id);
+                Navigator.pop(context);
               },
               child: Row(
                 children: [
@@ -149,77 +115,81 @@ class _CategoryDetailsState extends State<CategoryDetails> {
               SizedBox(
                 height: 30,
               ),
-              ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: _hotels.length,
-                itemBuilder: (context, index) {
-                  final hotel = _hotels[index];
-                  return Container(
-                    padding: EdgeInsets.all(20),
-                    height: 110,
-                    margin: EdgeInsets.all(8),
-                    decoration: new BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(.4),
-                          blurRadius: 20.0,
-                          spreadRadius: 0.0,
-                          offset: Offset(
-                            5.0,
-                            5.0,
+              TravelsData.hotels.length > 0
+                  ? ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: TravelsData.hotels.length,
+                      itemBuilder: (context, index) {
+                        final hotel = TravelsData.hotels[index];
+                        return Container(
+                          padding: EdgeInsets.all(20),
+                          height: 110,
+                          margin: EdgeInsets.all(8),
+                          decoration: new BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(.4),
+                                blurRadius: 20.0,
+                                spreadRadius: 0.0,
+                                offset: Offset(
+                                  5.0,
+                                  5.0,
+                                ),
+                              )
+                            ],
                           ),
-                        )
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            //         Container(
-                            //               width: 50,
-                            // height: 50,
-                            // decoration: const BoxDecoration(
-                            //     color: Colors.white, shape: BoxShape.circle),
-                            //               child: Center(
-                            //                 child: Image.asset(category["icon"],
-                            //                  height: 30,
-                            //                  color: lightColor,),
-                            //               ),
-                            //             ),
-                            Row(
-                              children: [
-                                Image.asset(
-                                  'images/hotel.png',
-                                  height: 30,
-                                  color: lightColor,
-                                ),
-                                Text(
-                                  "  " + hotel.name,
-                                  style: TextStyle(
-                                      color: titleColor, fontSize: 20),
-                                ),
-                              ],
-                            ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  //         Container(
+                                  //               width: 50,
+                                  // height: 50,
+                                  // decoration: const BoxDecoration(
+                                  //     color: Colors.white, shape: BoxShape.circle),
+                                  //               child: Center(
+                                  //                 child: Image.asset(category["icon"],
+                                  //                  height: 30,
+                                  //                  color: lightColor,),
+                                  //               ),
+                                  //             ),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        'images/hotel.png',
+                                        height: 30,
+                                        color: lightColor,
+                                      ),
+                                      Text(
+                                        "  " + hotel.name,
+                                        style: TextStyle(
+                                            color: titleColor, fontSize: 20),
+                                      ),
+                                    ],
+                                  ),
 
-                            Text(
-                              "\$${hotel.price.toString()}",
-                              style: TextStyle(color: lightColor, fontSize: 20),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              )
+                                  Text(
+                                    "\$${hotel.price.toString()}",
+                                    style: TextStyle(
+                                        color: lightColor, fontSize: 20),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    )
+                  : Container()
             ],
           ),
         ),

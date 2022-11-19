@@ -6,12 +6,13 @@ import 'package:flutter_weekend_project/Screens/CategoryDetailsManual.dart';
 import 'Screens/AuthScreen.dart';
 import 'Screens/HomeScreen.dart';
 import 'Screens/TravelHome.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'Models/travels_data.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(
     MyApp(),
   );
@@ -29,7 +30,7 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp(
         theme: new ThemeData(
             scaffoldBackgroundColor: Color.fromARGB(255, 255, 255, 255)),
-        initialRoute: HomeScreen.id,
+        initialRoute: AuthScreen.id,
         routes: {
           AuthScreen.id: (context) => AuthScreen(),
           HomeScreen.id: (context) => HomeScreen(),

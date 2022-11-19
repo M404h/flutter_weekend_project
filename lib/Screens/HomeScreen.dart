@@ -4,13 +4,28 @@ import 'package:flutter_weekend_project/Screens/TravelHome.dart';
 import 'package:flutter_weekend_project/constants.dart';
 import 'package:flutter_weekend_project/Models/travels_data.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static String id = 'homeScreen_id';
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    TravelsData.getFlights();
+    TravelsData.getHotels();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final travelsProvider = ChangeNotifierProvider(
       (ref) => TravelsData(),
     );
+
     return Scaffold(
       appBar: AppBar(
         title: Center(
@@ -18,7 +33,7 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "My Trip",
+                "My Trips",
                 style: TextStyle(
                   color: titleColor,
                   fontSize: 20,
@@ -39,135 +54,149 @@ class HomeScreen extends StatelessWidget {
               final travels = ref.watch(travelsProvider).travels;
               return travels.isNotEmpty
                   ? ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: travels.length,
                       itemBuilder: (context, index) {
-                        final travel = travels[index];
-                        return Container(
-                          padding: EdgeInsets.all(20),
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: kSecondaryColor,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          margin: EdgeInsets.all(8),
-                          child: Column(
-                            children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    travel.country,
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
+                        final travelsItem = travels[index];
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.pushReplacementNamed(
+                              context,
+                              TravelHome.id,
+                              arguments: {
+                                "country": travelsItem.country,
+                                "Hotels": travelsItem.hotelExpenses,
+                                "resturantExpenses":
+                                    travelsItem.resturantExpenses,
+                                "flightExpenses": travelsItem.flightExpenses,
+                                "enterntainmentExpenses":
+                                    travelsItem.enterntainmentExpenses,
+                                "budget": travelsItem.budget,
+                              },
+                            );
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(20),
+                            height: 110,
+                            margin: EdgeInsets.all(8),
+                            decoration: new BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(.4),
+                                  blurRadius: 20.0,
+                                  spreadRadius: 0.0,
+                                  offset: Offset(
+                                    5.0,
+                                    5.0,
                                   ),
-                                  Text(
-                                    travel.budget.toString(),
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 17,
-                              ),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Row(
+                                )
+                              ],
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    //         Container(
+                                    //               width: 50,
+                                    // height: 50,
+                                    // decoration: const BoxDecoration(
+                                    //     color: Colors.white, shape: BoxShape.circle),
+                                    //               child: Center(
+                                    //                 child: Image.asset(category["icon"],
+                                    //                  height: 30,
+                                    //                  color: lightColor,),
+                                    //               ),
+                                    //             ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Icon(
-                                          Icons.restaurant,
-                                          color: Colors.white,
-                                          size: 14,
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
                                         Text(
-                                          travel.resturantExpenses.toString() +
-                                              '%',
+                                          travelsItem.country,
                                           style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                          ),
+                                              color: titleColor, fontSize: 20),
                                         ),
                                       ],
                                     ),
-                                  ),
-                                  Expanded(
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.restaurant,
-                                          color: Colors.white,
-                                          size: 14,
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          travel.resturantExpenses.toString() +
-                                              '%',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                      ],
+
+                                    Text(
+                                      "\$${travelsItem.budget}",
+                                      style: TextStyle(
+                                          color: lightColor, fontSize: 20),
                                     ),
-                                  ),
-                                  Expanded(
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.restaurant,
-                                          color: Colors.white,
-                                          size: 14,
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          travel.resturantExpenses.toString() +
-                                              '%',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.restaurant,
-                                          color: Colors.white,
-                                          size: 14,
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          travel.resturantExpenses.toString() +
-                                              '%',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  children: [
+                                    travelsItem.flightExpenses != null
+                                        ? Row(
+                                            children: [
+                                              Image.asset("images/plane.png",
+                                                  height: 20,
+                                                  color: lightColor),
+                                              Text(
+                                                  " ${travelsItem.flightExpenses.toString()}")
+                                            ],
+                                          )
+                                        : Container(),
+                                    travelsItem.hotelExpenses != null
+                                        ? Row(
+                                            children: [
+                                              SizedBox(
+                                                width: 20,
+                                              ),
+                                              Image.asset("images/hotel.png",
+                                                  height: 20,
+                                                  color: lightColor),
+                                              Text(
+                                                  " ${travelsItem.hotelExpenses.toString()}")
+                                            ],
+                                          )
+                                        : Container(),
+                                    travelsItem.resturantExpenses != null
+                                        ? Row(
+                                            children: [
+                                              SizedBox(
+                                                width: 20,
+                                              ),
+                                              Image.asset("images/dish.png",
+                                                  height: 20,
+                                                  color: lightColor),
+                                              Text(
+                                                  " ${travelsItem.resturantExpenses.toString()}")
+                                            ],
+                                          )
+                                        : Container(),
+                                    travelsItem.enterntainmentExpenses != null
+                                        ? Row(
+                                            children: [
+                                              SizedBox(
+                                                width: 20,
+                                              ),
+                                              Image.asset("images/gift.png",
+                                                  height: 20,
+                                                  color: lightColor),
+                                              Text(
+                                                  " ${travelsItem.enterntainmentExpenses.toString()}")
+                                            ],
+                                          )
+                                        : Container()
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       },
