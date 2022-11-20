@@ -10,6 +10,7 @@ import '../Models/user_data.dart';
 import 'HomeScreen.dart';
 import 'package:flutter_weekend_project/constants.dart';
 // import 'package:intl_phone_field/intl_phone_field.dart';
+//This is a comment
 
 class AuthScreen extends StatefulWidget {
   static const String id = 'auth-screen';
